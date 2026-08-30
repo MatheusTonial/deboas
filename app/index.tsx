@@ -1,4 +1,5 @@
 import ResultCard from "@/components/ResultCard";
+import { colors } from "@/constants/theme";
 import {
   gerarResposta,
   type Intencao,
@@ -56,7 +57,7 @@ export default function Index() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#f5f5f5" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
       <ScrollView
         contentContainerStyle={styles.scroll}
         keyboardShouldPersistTaps="handled"
@@ -74,6 +75,7 @@ export default function Index() {
           value={tarefa}
           onChangeText={setTarefa}
           placeholder="Ex: montar a apresentação do trimestre até amanhã"
+          placeholderTextColor={colors.textMuted}
           style={styles.inputMultiline}
           multiline
           textAlignVertical="top"
@@ -124,7 +126,7 @@ export default function Index() {
           disabled={!podeGerar}
         >
           {isLoading ? (
-            <ActivityIndicator color="#FFF" />
+            <ActivityIndicator color={colors.surface} />
           ) : (
             <Text style={styles.buttonText}>Gerar resposta 🎲</Text>
           )}

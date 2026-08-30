@@ -1,50 +1,53 @@
+import { colors, fonts, radius } from "@/constants/theme";
 import { StyleSheet } from "react-native";
 
 /**
  * Estilos da aplicação "Tô de Boas!".
- * Paleta: vermelho coral (#FF6B6B) para destaques e verde-água (#4ECDC4)
- * para ações principais.
+ * Usa o Terraform Theme (tons terrosos) — todos os valores vêm de constants/theme.ts.
  */
 const styles = StyleSheet.create({
   // Área rolável que envolve toda a tela.
   scroll: {
     flexGrow: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: colors.surface,
     padding: 20,
     alignItems: "center",
   },
   titulo: {
     fontSize: 32,
-    fontWeight: "bold",
-    color: "#FF6B6B",
+    fontFamily: fonts.bold,
+    color: colors.primary,
     marginBottom: 10,
   },
   subtitulo: {
-    fontSize: 16,
-    color: "#666",
-    fontStyle: "italic",
-    marginBottom: 20,
+    fontSize: 15,
+    fontFamily: fonts.regular,
+    color: colors.tertiary,
+    marginBottom: 24,
     textAlign: "center",
+    lineHeight: 21,
   },
   // Rótulo acima de cada campo.
   label: {
     alignSelf: "flex-start",
     fontSize: 15,
-    fontWeight: "600",
-    color: "#333",
+    fontFamily: fonts.semibold,
+    color: colors.secondary,
     marginBottom: 8,
   },
   // Campo de texto multilinha para descrever a tarefa.
   inputMultiline: {
     width: "100%",
     minHeight: 90,
-    backgroundColor: "#FFF",
-    borderRadius: 10,
+    backgroundColor: colors.surfaceRaised,
+    borderRadius: radius,
     padding: 12,
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: colors.border,
     marginBottom: 20,
     fontSize: 15,
+    fontFamily: fonts.regular,
+    color: colors.secondary,
   },
   // Linha com os dois botões de seleção (toggle).
   toggleRow: {
@@ -56,62 +59,63 @@ const styles = StyleSheet.create({
   toggleButton: {
     flex: 1,
     paddingVertical: 14,
-    borderRadius: 10,
+    borderRadius: radius,
     borderWidth: 2,
-    borderColor: "#ddd",
-    backgroundColor: "#FFF",
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceRaised,
     alignItems: "center",
   },
-  // Estilo aplicado quando o toggle está selecionado.
+  // Estilo aplicado quando o toggle está selecionado (destaque = primária).
   toggleButtonAtivo: {
-    borderColor: "#FF6B6B",
-    backgroundColor: "#FFE3E3",
+    borderColor: colors.primary,
+    backgroundColor: "#f7e4d3",
   },
   toggleText: {
     fontSize: 14,
-    fontWeight: "600",
-    color: "#888",
+    fontFamily: fonts.semibold,
+    color: colors.tertiary,
   },
   toggleTextAtivo: {
-    color: "#FF6B6B",
+    color: colors.primary,
   },
   // Botão principal "Gerar resposta".
   button: {
-    backgroundColor: "#4ECDC4",
+    backgroundColor: colors.primary,
     height: 48,
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: radius,
     justifyContent: "center",
     width: "100%",
   },
   // Estado desabilitado do botão principal.
   buttonDisabled: {
-    backgroundColor: "#B5E5E1",
+    backgroundColor: colors.primaryMuted,
   },
   buttonText: {
-    fontWeight: "bold",
-    color: "#FFF",
+    fontFamily: fonts.bold,
+    color: colors.surface,
     fontSize: 16,
   },
   // Card que exibe a resposta gerada.
   card: {
     borderWidth: 1,
-    backgroundColor: "white",
+    backgroundColor: colors.surfaceRaised,
     marginTop: 30,
     width: "100%",
-    borderRadius: 10,
+    borderRadius: radius,
     padding: 20,
-    borderColor: "#ddd",
+    borderColor: colors.border,
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
+    fontFamily: fonts.bold,
+    color: colors.secondary,
     marginBottom: 10,
   },
   cardText: {
     fontSize: 16,
-    color: "#666",
+    fontFamily: fonts.regular,
+    color: colors.secondary,
     lineHeight: 24,
   },
   // Etiqueta discreta indicando qual IA gerou a resposta.
@@ -119,23 +123,24 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginTop: 6,
     fontSize: 12,
+    fontFamily: fonts.regular,
     fontStyle: "italic",
-    color: "#999",
+    color: colors.tertiary,
   },
   // Botão "Copiar resposta".
   copyButton: {
     marginTop: 12,
     width: "100%",
     height: 44,
-    borderRadius: 10,
+    borderRadius: radius,
     borderWidth: 2,
-    borderColor: "#4ECDC4",
+    borderColor: colors.tertiary,
     alignItems: "center",
     justifyContent: "center",
   },
   copyButtonText: {
-    color: "#4ECDC4",
-    fontWeight: "bold",
+    color: colors.secondary,
+    fontFamily: fonts.bold,
     fontSize: 15,
   },
 });

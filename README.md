@@ -12,7 +12,7 @@ ou **recusar**. A partir disso, o app chama a API do **Claude (Anthropic)** e ge
 
 - Expo SDK 54 + expo-router + TypeScript
 - Tela única (sem navegação)
-- IA: **Google Gemini** (`gemini-2.0-flash`) primeiro; **Anthropic Claude** (`claude-sonnet-4-6`) como fallback. Ambos via `fetch`.
+- IA: **Google Gemini** (`gemini-3.6-flash`) primeiro; **Anthropic Claude** (`claude-sonnet-4-6`) como fallback. Ambos via `fetch`.
 - `moti` para a animação do card, `expo-clipboard` para copiar a resposta
 
 ## Como rodar
