@@ -1,50 +1,57 @@
-# Welcome to your Expo app 👋
+# 🧘 Tô de Boas!
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App em React Native (Expo) para a disciplina de React Native.
 
-## Get started
+O usuário informa uma tarefa que recebeu no trabalho e escolhe se vai **aceitar**
+ou **recusar**. A partir disso, o app chama a API do **Claude (Anthropic)** e gera:
 
-1. Install dependencies
+- **Vou recusar:** uma desculpa completamente surreal e exagerada, contada a sério.
+- **Sou obrigado:** um lamento cômico de mártir, deixando claro que não tinha escolha.
+
+## Stack
+
+- Expo SDK 54 + expo-router + TypeScript
+- Tela única (sem navegação)
+- IA: **Google Gemini** (`gemini-2.0-flash`) primeiro; **Anthropic Claude** (`claude-sonnet-4-6`) como fallback. Ambos via `fetch`.
+- `moti` para a animação do card, `expo-clipboard` para copiar a resposta
+
+## Como rodar
+
+1. Instale as dependências:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Crie o arquivo `.env` na raiz (baseado em `.env.example`) com as suas chaves:
+
+   ```
+   EXPO_PUBLIC_GEMINI_API_KEY=sua_chave_do_gemini
+   EXPO_PUBLIC_ANTHROPIC_API_KEY=sua_chave_do_claude
+   ```
+
+   Chave do Gemini (gratuita): https://aistudio.google.com/apikey
+   Basta uma das duas para o app funcionar — o Gemini é tentado primeiro e o
+   Claude só é usado se o Gemini falhar.
+
+3. Inicie o projeto:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+   Depois pressione `a` (Android), `i` (iOS) ou `w` (web).
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Estrutura
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Caminho                      | Papel                                                        |
+| ---------------------------- | ----------------------------------------------------------- |
+| `app/index.tsx`              | Tela única com o formulário, os toggles e o resultado        |
+| `app/_layout.tsx`            | Layout raiz (Stack sem header)                               |
+| `service/ai/generator.ts`    | `gerarResposta` — chama Gemini e faz fallback para o Claude   |
+| `constants/prompts.ts`       | `SYSTEM_PROMPT` que define o comportamento da IA             |
+| `components/ResultCard.tsx`  | Card de apresentação da resposta (com animação)              |
+| `styles/index.ts`            | Estilos da aplicação                                         |
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+> ⚠️ A chave fica embutida no bundle do app (limitação do `EXPO_PUBLIC_`). Use uma
+> chave de estudo/descartável.
